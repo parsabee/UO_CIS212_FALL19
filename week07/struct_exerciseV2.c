@@ -51,7 +51,7 @@ FullName *createName (char *first_name, char *last_name) {
 				return name;
 
 			} else { /* strdup(last_name) returned NULL, i.e. malloc failure */
-					 /* so we need to free what we have malloc'd so far and return NULL */
+			         /* so we need to free what we have malloc'd so far and return NULL */
 
 				/* free(name->lname) I dont want to do this, because I know that strdup(last_name) wasnt successful
 				 * so name->lname doesn't have heap memory associated with it */
@@ -87,15 +87,15 @@ Info *createInfo (int age, char *first_name, char *last_name) {
 		FullName *name = createName(first_name, last_name);
 
 		if (name != NULL) { /* remember we made our function `createName()' return NULL if unsuccessful 
-							 * so we need to check that here */
+		                     * so we need to check that here */
 			info->age = age;
 			info->full_name = name;
 			info->print = printInfo;
 			info->destroy = destroyInfo;
 
 		} else { /* malloc failure, free what malloc allocated successfully */
-			/* so wont free (name) because it wasn't successful */
-			/* but will free (info) because that was a successful allocation */
+		         /* so wont free (name) because it wasn't successful */
+		         /* but will free (info) because that was a successful allocation */
 			free(info);
 			return NULL;
 		}
