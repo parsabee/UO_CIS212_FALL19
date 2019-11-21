@@ -28,7 +28,7 @@ Parent *CreateChild (int a, int b)
 	/* child class */
 	Child *c = malloc (sizeof(Child));
 	c->a = a; 
-	c->b = b
+	c->b = b;
 
 	/* parent class */
 	Parent *p = malloc (sizeof(p));
