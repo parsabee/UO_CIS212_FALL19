@@ -7,31 +7,45 @@ typedef struct parent {
 }Parent;
 
 typedef struct child {
-	int a;
+	int a; /* two random ints */
 	int b;
 }Child;
 
-void printing (void *s) {
-	Child *little = (Child *)s;
-	printf ("%d\n", little->a);
-	printf ("%d\n", little->b);
+void printChild (void *s) {/* this function will be assigned to Parent->print function*/
+
+	Child *c = (Child *)s; /* we have to do this cast */
+	printf ("%d\n", c->a);
+	printf ("%d\n", c->b);
 }
 
 void printParent (Parent *p) {
 	p->print(p->self);
 }
 
-int main () {
+Parent *CreateChild (int a, int b)
+{
 
 	/* child class */
 	Child *c = malloc (sizeof(Child));
-	c->a = 22;
-	c->b = 33;
+	c->a = a; 
+	c->b = b
 
 	/* parent class */
 	Parent *p = malloc (sizeof(p));
 	p->self = c;
-	p->print = printing;
+	p->print = printChild;
 
+	return p;
+}
+
+void Destroy(Parent *p) {
+	free(p->self);
+	free(p);
+}
+
+int main () {
+
+	Parent *p = CreateChild(22, 33);
 	printParent(p);
+	Destroy (p);
 }
