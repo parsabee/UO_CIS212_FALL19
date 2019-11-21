@@ -8,16 +8,16 @@ swap ( void *array, size_t size, int i, int j)
 
 	/* a generic swap would be like this
 	 *
-	 *	tmp = array [i]			store content of array[i] in a temp valriable
+	 *	tmp = array [i]         store content of array[i] in a temp valriable
 	 *  array [i] = array [j]   update content of array [i] to be array [j]
 	 *  array [j] = tmp         update array [j] to be whats in tmp   
 	 */
 
 	char tmp [size];      // tem variable
 	memset(tmp, 0, size); //tmp is not initiallize, this initializes it
-	memcpy(tmp, array+i*size, size); 		  //      tmp = array[i]
+	memcpy(tmp, array+i*size, size);          //      tmp = array[i]
 	memcpy(array+i*size, array+j*size, size); // array[i] = array[j]
-	memcpy(array+j*size, tmp, size);  		  // array[j] = tmp
+	memcpy(array+j*size, tmp, size);          // array[j] = tmp
 }
 
 int
