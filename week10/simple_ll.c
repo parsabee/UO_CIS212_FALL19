@@ -17,12 +17,10 @@ void addNode (int data) {
 
 	if (tail == NULL)
 		tail = cur_node;
-	if (head == NULL)
-		head = cur_node;
-	else{
+	if (head != NULL)
 		head->next = cur_node;
-		head = cur_node;
-	}
+	head = cur_node;
+
 }
 
 void printLL () {
